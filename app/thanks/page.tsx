@@ -31,9 +31,9 @@ export default function ThanksPage() {
         </h1>
 
         <p className="mt-4 text-lg text-ink-500">
-          Beta erişimi sırasında olduğunda{" "}
-          <strong className="text-ink-900">destek@bilsemc2.com</strong> üzerinden
-          sana yazıyoruz. Bağlantı kurulumunu birlikte yapacağız.
+          Beta sıran geldiğinde{" "}
+          <strong className="text-ink-900">destek@bilsemc2.com</strong>{" "}
+          üzerinden sana yazacağız. Bağlantı kurulumunu birlikte yapacağız.
         </p>
 
         <p className="mt-3 text-sm text-ink-400">
