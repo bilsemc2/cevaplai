@@ -11,10 +11,12 @@
 
 # Forms success URL must be a non-Next.js path so POSTs aren't swallowed by
 # the App Router static handler. Netlify Forms processes the POST at the edge
-# (because data-netlify="true" + form-name field), then 303-redirects here.
-# This rule forwards the GET landing to the real /thanks page.
+# (because data-netlify="true" + form-name field), then 303-redirects to this
+# URL. The rule below forwards the *follow-up GET* to the real /thanks page.
+#
+# Important: do NOT set force=true here. With force=true the rule preempts
+# the Forms handler and POSTs never get recorded as submissions.
 [[redirects]]
   from = "/forms-success"
   to = "/thanks"
   status = 302
-  force = true
