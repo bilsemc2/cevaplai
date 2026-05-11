@@ -8,3 +8,13 @@
 # Netlify's official Next.js plugin handles App Router, ISR, and image optimization.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Forms success URL must be a non-Next.js path so POSTs aren't swallowed by
+# the App Router static handler. Netlify Forms processes the POST at the edge
+# (because data-netlify="true" + form-name field), then 303-redirects here.
+# This rule forwards the GET landing to the real /thanks page.
+[[redirects]]
+  from = "/forms-success"
+  to = "/thanks"
+  status = 302
+  force = true

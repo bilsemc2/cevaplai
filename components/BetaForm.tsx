@@ -53,7 +53,7 @@ export default function BetaForm() {
         <form
           name="beta-signup"
           method="POST"
-          action="/thanks"
+          action="/forms-success"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           className="mt-10 rounded-2xl border border-ink-100 bg-white p-6 shadow-sm sm:p-8"
