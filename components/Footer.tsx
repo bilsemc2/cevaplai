@@ -16,6 +16,7 @@ const productLinks: FooterLink[] = [
   { label: "Senaryolar", href: "/#senaryolar" },
   { label: "SSS", href: "/#sss" },
   { label: "Beta'ya katıl", href: "/#beta" },
+  { label: "Beta hazırlık listesi", href: "/hazirlik" },
 ];
 
 const contactLinks: FooterLink[] = [

@@ -41,19 +41,37 @@ export default function ThanksPage() {
           etmeyi unutma.
         </p>
 
+        <div className="mt-10 rounded-2xl border border-brand-200 bg-brand-50/60 p-5 text-left sm:p-6">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-700">
+            Hazırlık önerisi
+          </p>
+          <p className="mt-2 text-[15px] leading-relaxed text-ink-700">
+            Sıran gelmeden, onboarding görüşmesi için ihtiyacın olacak
+            bilgileri (Telegram bot, Gemini API key, mail hesap bilgileri,
+            kişiselleştirme tercihleri) önceden hazırlamak istersen{" "}
+            <Link
+              href="/hazirlik"
+              className="font-semibold text-brand-700 underline-offset-4 hover:underline"
+            >
+              hazırlık listesine bak
+            </Link>
+            . Kurulum 30-45 dk sürer, hazırsan hızlıca tamamlanır.
+          </p>
+        </div>
+
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link
-            href="/"
+            href="/hazirlik"
             className="inline-flex w-full items-center justify-center rounded-xl bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
+          >
+            Hazırlık listesini aç
+          </Link>
+          <Link
+            href="/"
+            className="inline-flex w-full items-center justify-center rounded-xl border border-ink-200 bg-white px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
           >
             Ana sayfaya dön
           </Link>
-          <a
-            href="mailto:destek@bilsemc2.com"
-            className="inline-flex w-full items-center justify-center rounded-xl border border-ink-200 bg-white px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
-          >
-            destek@bilsemc2.com
-          </a>
         </div>
       </div>
     </main>
