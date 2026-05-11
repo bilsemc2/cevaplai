@@ -27,9 +27,9 @@ const contactLinks: FooterLink[] = [
 ];
 
 const legalLinks: FooterLink[] = [
-  { label: "KVKK Aydınlatma Metni", href: "#" },
-  { label: "Gizlilik Politikası", href: "#" },
-  { label: "Kullanım Koşulları", href: "#" },
+  { label: "KVKK Aydınlatma Metni", href: "/kvkk" },
+  { label: "Gizlilik Politikası", href: "/gizlilik" },
+  { label: "Kullanım Koşulları", href: "/kosullar" },
 ];
 
 interface SocialIcon {
