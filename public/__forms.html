@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify Forms — beta-signup</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      This file is parsed by Netlify at deploy time so the build process can
+      detect the form and its fields. It is never visited by real users.
+      Required by @netlify/plugin-nextjs v5 + App Router.
+      See: https://ntl.fyi/next-runtime-forms-migration
+    -->
+    <form
+      name="beta-signup"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      method="POST"
+      action="/thanks"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="beta-signup" />
+      <input type="text" name="bot-field" />
+
+      <input type="email" name="email" />
+
+      <input type="radio" name="provider" value="gmail" />
+      <input type="radio" name="provider" value="outlook" />
+      <input type="radio" name="provider" value="icloud" />
+      <input type="radio" name="provider" value="diger" />
+
+      <input type="checkbox" name="channels" value="mail" />
+      <input type="checkbox" name="channels" value="whatsapp" />
+      <input type="checkbox" name="channels" value="telegram" />
+
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
