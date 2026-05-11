@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 interface RadioOption {
   value: string;
   label: string;
@@ -22,7 +27,54 @@ const channels: CheckboxOption[] = [
   { value: "telegram", label: "Telegram", tone: "brand" },
 ];
 
+function encodeFormData(formData: FormData): string {
+  const entries: string[] = [];
+  formData.forEach((value, key) => {
+    if (typeof value === "string") {
+      entries.push(
+        encodeURIComponent(key) + "=" + encodeURIComponent(value),
+      );
+    }
+  });
+  return entries.join("&");
+}
+
 export default function BetaForm() {
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    setSubmitting(true);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: encodeFormData(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      router.push("/thanks");
+    } catch (err) {
+      setSubmitting(false);
+      setError(
+        "Gönderim başarısız oldu. Lütfen birkaç saniye sonra tekrar dene.",
+      );
+      console.error("Form submission error:", err);
+    }
+  }
+
   return (
     <section
       id="beta"
@@ -53,9 +105,10 @@ export default function BetaForm() {
         <form
           name="beta-signup"
           method="POST"
-          action="/forms-success"
+          action="/__forms.html"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
           className="mt-10 rounded-2xl border border-ink-100 bg-white p-6 shadow-sm sm:p-8"
         >
           <input type="hidden" name="form-name" value="beta-signup" />
@@ -159,11 +212,34 @@ export default function BetaForm() {
             />
           </div>
 
+          {error && (
+            <p
+              role="alert"
+              className="mt-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+            >
+              {error}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            disabled={submitting}
+            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Sıraya katıl
+            {submitting && (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className="h-4 w-4 animate-spin"
+                aria-hidden="true"
+              >
+                <path d="M21 12a9 9 0 1 1-6.2-8.6" />
+              </svg>
+            )}
+            {submitting ? "Gönderiliyor…" : "Sıraya katıl"}
           </button>
 
           <p className="mt-4 text-center text-xs text-ink-400">
