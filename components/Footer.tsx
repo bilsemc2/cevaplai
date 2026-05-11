@@ -40,27 +40,31 @@ interface SocialIcon {
 
 const socials: SocialIcon[] = [
   {
-    label: "X",
-    href: "#",
+    label: "X (Twitter)",
+    href: "https://x.com/bilsemsinavi",
     path: (
-      <path d="m4 4 16 16M20 4 4 20" />
+      <path d="M18 2h3l-7.5 8.5L22.5 22h-6l-5-6.5L5.5 22H2l8-9L2 2h6l4.5 6Z" />
     ),
   },
   {
-    label: "LinkedIn",
-    href: "#",
+    label: "YouTube",
+    href: "https://www.youtube.com/@ersanicoz",
     path: (
       <>
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M7 10v7M7 7v.01M11 17v-4a2.5 2.5 0 0 1 5 0v4M11 10v7" />
+        <path d="M22.5 7.5a3 3 0 0 0-2.1-2.1C18.4 5 12 5 12 5s-6.4 0-8.4.4A3 3 0 0 0 1.5 7.5C1.1 9.4 1.1 12 1.1 12s0 2.6.4 4.5a3 3 0 0 0 2.1 2.1C5.6 19 12 19 12 19s6.4 0 8.4-.4a3 3 0 0 0 2.1-2.1c.4-1.9.4-4.5.4-4.5s0-2.6-.4-4.5Z" />
+        <path d="m10 15 5-3-5-3z" fill="currentColor" stroke="none" />
       </>
     ),
   },
   {
-    label: "GitHub",
-    href: "#",
+    label: "Instagram",
+    href: "https://www.instagram.com/bilsemc2/",
     path: (
-      <path d="M9 19c-4 1.5-4-2-6-2m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+      <>
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.7" fill="currentColor" stroke="none" />
+      </>
     ),
   },
 ];
@@ -122,6 +126,8 @@ export default function Footer() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-500 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                 >
                   <svg
