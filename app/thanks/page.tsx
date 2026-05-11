@@ -32,7 +32,7 @@ export default function ThanksPage() {
 
         <p className="mt-4 text-lg text-ink-500">
           Beta erişimi sırasında olduğunda{" "}
-          <strong className="text-ink-900">destek@cevaplai.com</strong> üzerinden
+          <strong className="text-ink-900">destek@bilsemc2.com</strong> üzerinden
           sana yazıyoruz. Bağlantı kurulumunu birlikte yapacağız.
         </p>
 
@@ -49,10 +49,10 @@ export default function ThanksPage() {
             Ana sayfaya dön
           </Link>
           <a
-            href="mailto:destek@cevaplai.com"
+            href="mailto:destek@bilsemc2.com"
             className="inline-flex w-full items-center justify-center rounded-xl border border-ink-200 bg-white px-6 py-3 text-base font-semibold text-ink-700 transition hover:border-brand-300 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
           >
-            destek@cevaplai.com
+            destek@bilsemc2.com
           </a>
         </div>
       </div>

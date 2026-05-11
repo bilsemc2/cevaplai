@@ -20,8 +20,8 @@ const productLinks: FooterLink[] = [
 
 const contactLinks: FooterLink[] = [
   {
-    label: "destek@cevaplai.com",
-    href: "mailto:destek@cevaplai.com",
+    label: "destek@bilsemc2.com",
+    href: "mailto:destek@bilsemc2.com",
     external: true,
   },
 ];
@@ -105,11 +105,11 @@ export default function Footer() {
               <Image
                 src="/cevaplai.png"
                 alt=""
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain"
+                width={64}
+                height={64}
+                className="h-16 w-16 object-contain"
               />
-              <span className="text-xl font-bold tracking-tight text-ink-900">
+              <span className="text-2xl font-bold tracking-tight text-ink-900">
                 Cevap<span className="text-brand-600">lai</span>
               </span>
             </Link>

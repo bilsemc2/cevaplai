@@ -112,10 +112,10 @@ export default function FAQ() {
           <p className="mt-4 text-lg text-ink-500">
             Aklındaki ilk sorulara hızlı cevaplar. Daha fazlası için{" "}
             <a
-              href="mailto:destek@cevaplai.com"
+              href="mailto:destek@bilsemc2.com"
               className="font-semibold text-brand-700 underline-offset-4 hover:underline"
             >
-              destek@cevaplai.com
+              destek@bilsemc2.com
             </a>
             .
           </p>

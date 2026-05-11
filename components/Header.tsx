@@ -13,12 +13,12 @@ export default function Header() {
           <Image
             src="/cevaplai.png"
             alt=""
-            width={40}
-            height={40}
+            width={48}
+            height={48}
             priority
-            className="h-10 w-10 object-contain"
+            className="h-12 w-12 object-contain"
           />
-          <span className="text-lg font-bold tracking-tight text-ink-900">
+          <span className="text-xl font-bold tracking-tight text-ink-900">
             Cevap<span className="text-brand-600">lai</span>
           </span>
         </Link>
