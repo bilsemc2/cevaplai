@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cevaplai — Landing Page
 
-## Getting Started
+Cevaplai için tanıtım sayfası. **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4**, statik üretim (SSG), tek sayfa (one-pager).
 
-First, run the development server:
+> Cevaplai: mail, WhatsApp ve Telegram için yapay zeka iletişim asistanı.
+> E-postaları Telegram'dan onaylı taslakla cevaplar, WhatsApp/Telegram DM'lerini önceden verilmiş bilgilerle otomatik yanıtlar.
+
+## Komutlar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install        # bağımlılıkları kur
+npm run dev        # http://localhost:3000
+npm run build      # production build (.next/)
+npm start          # production preview
+npm run lint       # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Klasör yapısı
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cevaplai/
+├── app/
+│   ├── layout.tsx        # root layout (Inter font, Header, Footer)
+│   ├── page.tsx          # ana sayfa (7 bölümü sırayla render eder)
+│   ├── thanks/page.tsx   # Netlify Forms submit sonrası
+│   ├── globals.css       # Tailwind v4 + marka paleti
+│   ├── icon.png          # favicon (Next.js otomatik)
+│   ├── apple-icon.png    # iOS home screen ikonu
+│   ├── sitemap.ts        # /sitemap.xml çıktısı
+│   └── robots.ts         # /robots.txt çıktısı
+├── components/
+│   ├── Header.tsx        # sticky header (logo + Beta CTA)
+│   ├── Hero.tsx
+│   ├── HowItWorks.tsx    # 4 adım
+│   ├── Features.tsx      # 8 madde
+│   ├── Channels.tsx      # 3 kanal karşılaştırması
+│   ├── UseCases.tsx      # 3 senaryo
+│   ├── FAQ.tsx           # 8 soru (native <details>)
+│   ├── BetaForm.tsx      # Netlify Forms beta kayıt
+│   └── Footer.tsx
+├── lib/
+│   └── seo.ts            # paylaşılabilir metadata
+├── public/
+│   ├── cevaplai.png      # logo (512×512)
+│   ├── og_cevaplai.png   # OG image (1200×630)
+│   ├── mockup-whatsapp.svg
+│   └── mockup-telegram.svg
+└── next.config.ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Netlify'a deploy
 
-## Learn More
+### 1. Site oluştur
 
-To learn more about Next.js, take a look at the following resources:
+Netlify dashboard → **Add new site → Import an existing project**. Git provider (GitHub/GitLab) bağla, repo'yu seç. Build ayarları otomatik algılanır:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Ayar | Değer |
+|---|---|
+| Build command | `npm run build` |
+| Publish directory | `.next` |
+| Node version | 20 (veya 22) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Netlify'ın `@netlify/plugin-nextjs` eklentisi, App Router'lı projeyi otomatik tanır ve doğru output yapısını kurar. Ek `netlify.toml` gerekmiyor (gerekirse köke ekleyebilirsiniz).
 
-## Deploy on Vercel
+### 2. Form gönderim akışı
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Beta kayıt formu **Netlify Forms** ile entegre. Form `data-netlify="true"` attribute'u ile statik HTML'de tanımlı; Netlify deploy sırasında otomatik algılar.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Form adı: **`beta-signup`**
+- Alanlar: `email`, `provider`, `channels` (çoklu seçim), `message`
+- Honeypot: `bot-field` (spam koruması)
+- Submit sonrası `/thanks` sayfasına yönlendirir
+
+Kayıtları görmek için: **Netlify dashboard → Forms → beta-signup**. E-posta bildirimi açmak için: **Forms → Settings → Form notifications**.
+
+### 3. Domain
+
+Production domain'i Netlify'da `cevaplai.com` olarak ayarladıktan sonra `lib/seo.ts` içindeki `SITE_URL` zaten doğru. SSL otomatik gelir.
+
+### 4. Logo ve görseller
+
+- `public/cevaplai.png` — 512×512 logo (favicon + Apple touch icon olarak kullanılıyor)
+- `public/og_cevaplai.png` — 1200×630 sosyal medya kartı
+- `public/mockup-*.svg` — Hero'daki Telegram/WhatsApp önizleme görselleri (placeholder, istediğiniz zaman değiştirilebilir)
+
+## Önemli detaylar
+
+- **Tek dil:** Türkçe (`<html lang="tr">`)
+- **Karanlık mod yok**, sadece beyaz tema
+- **Statik üretim:** Tüm sayfalar (`/`, `/thanks`) prerender edilir, sunucu çalışmaz
+- **Erişilebilirlik:** Semantic HTML, alt metinler, klavye navigasyonu, WCAG AA kontrast
+- **Performans:** Inter font swap, görseller `next/image` ile optimize, no client JS (formlar dahil)
+
+## SEO
+
+- Title + description + OG + Twitter card → [`lib/seo.ts`](lib/seo.ts)
+- Sitemap → otomatik `/sitemap.xml`
+- Robots → otomatik `/robots.txt` (`/thanks` indexlenmez)
+- `<html lang="tr">` ve `og:locale=tr_TR`
+
+## KVKK / Yasal
+
+Footer'daki **KVKK Aydınlatma Metni**, **Gizlilik Politikası** ve **Kullanım Koşulları** linkleri şu an `#` placeholder. Hazırlandığında `components/Footer.tsx` içinde `legalLinks` dizisinin `href` değerlerini güncelle.

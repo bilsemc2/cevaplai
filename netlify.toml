@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify's official Next.js plugin handles App Router, ISR, and image optimization.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
