@@ -116,8 +116,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-500">
               Mail, WhatsApp ve Telegram için yapay zeka iletişim asistanı.
-              Cevaplai, <strong className="text-ink-700">bilsemc2</strong>{" "}
-              tarafından geliştirilen bağımsız bir projedir. Türkiye merkezli.
+              Türkiye merkezli, bağımsız geliştirme.
             </p>
 
             <div className="mt-5 flex gap-2">
@@ -169,7 +168,54 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col-reverse items-center justify-between gap-4 border-t border-ink-100 pt-6 sm:flex-row">
+        <a
+          href="https://www.instagram.com/bilsemc2/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-12 flex items-center gap-5 rounded-2xl border border-ink-100 bg-gradient-to-r from-ink-50 to-white p-5 transition hover:border-brand-200 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 sm:p-6"
+          aria-label="Cevaplai bir bilsemc2 ürünüdür — bilsemc2 Instagram"
+        >
+          <Image
+            src="/bilsemc2.png"
+            alt="bilsemc2"
+            width={72}
+            height={72}
+            className="h-16 w-16 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"
+          />
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-400">
+              Bir{" "}
+              <span className="text-ink-700">bilsemc2</span>{" "}
+              ürünüdür
+            </p>
+            <p className="mt-1.5 text-base font-semibold leading-snug text-ink-900 sm:text-lg">
+              Cevaplai, <span className="text-brand-600">bilsemc2</span>{" "}
+              ailesinin bir parçasıdır.
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-ink-500">
+              Türkiye&apos;den, çocuklarımız ve işimizin geleceği için yapay
+              zeka temelli ürünler.
+            </p>
+          </div>
+          <span
+            aria-hidden="true"
+            className="hidden text-ink-300 transition group-hover:translate-x-1 group-hover:text-brand-600 sm:inline-flex"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+
+        <div className="mt-8 flex flex-col-reverse items-center justify-between gap-4 border-t border-ink-100 pt-6 sm:flex-row">
           <p className="text-xs text-ink-400">
             © {CURRENT_YEAR} Cevaplai · Tüm hakları saklıdır.
           </p>
