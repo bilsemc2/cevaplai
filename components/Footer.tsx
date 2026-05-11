@@ -100,18 +100,15 @@ export default function Footer() {
             <Link
               href="/"
               aria-label="Cevaplai — ana sayfa"
-              className="inline-flex items-center gap-3"
+              className="inline-flex items-center"
             >
               <Image
                 src="/cevaplai.png"
-                alt=""
-                width={64}
-                height={64}
-                className="h-16 w-16 object-contain"
+                alt="Cevaplai"
+                width={112}
+                height={112}
+                className="h-28 w-28 object-contain"
               />
-              <span className="text-2xl font-bold tracking-tight text-ink-900">
-                Cevap<span className="text-brand-600">lai</span>
-              </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-500">
               Mail, WhatsApp ve Telegram için yapay zeka iletişim asistanı.
