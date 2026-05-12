@@ -1,49 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-
-interface MockupProps {
-  src: string;
-  alt: string;
-  channel: string;
-  role: string;
-  tone: "brand" | "accent";
-  rotate: string;
-}
-
-function Mockup({ src, alt, channel, role, tone, rotate }: MockupProps) {
-  const ring =
-    tone === "brand"
-      ? "ring-brand-200 bg-brand-50"
-      : "ring-accent-300/60 bg-accent-50";
-  const badge =
-    tone === "brand"
-      ? "bg-brand-600 text-white"
-      : "bg-accent-600 text-white";
-
-  return (
-    <div className={`relative ${rotate}`}>
-      <div
-        className={`relative aspect-[480/620] w-full rounded-3xl ring-1 ${ring} p-2 shadow-xl`}
-      >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          priority
-          sizes="(min-width: 1024px) 320px, 45vw"
-          className="object-contain"
-        />
-        <div
-          className={`absolute -top-3 left-4 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-semibold ${badge} shadow-sm`}
-        >
-          <span className="uppercase tracking-wide">{channel}</span>
-          <span className="h-1 w-1 rounded-full bg-white/60" />
-          <span className="font-medium normal-case opacity-90">{role}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Hero() {
   return (
@@ -104,24 +59,27 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <Mockup
-                src="/mockup-whatsapp.svg"
-                alt="WhatsApp'ta müşterinin sorduğu soruya Cevaplai'nin önceden verilmiş bilgilerle yazdığı otomatik cevap"
-                channel="WhatsApp"
-                role="otomatik"
-                tone="accent"
-                rotate="lg:-rotate-2"
-              />
-              <Mockup
-                src="/mockup-telegram.svg"
-                alt="Telegram'da gelen e-posta için Cevaplai'nin yazdığı taslak ve Gönder, Düzelt, Skip onay butonları"
-                channel="Telegram"
-                role="mail onayı"
-                tone="brand"
-                rotate="lg:rotate-2 lg:translate-y-6"
-              />
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="relative overflow-hidden rounded-3xl bg-brand-50 ring-1 ring-brand-200 shadow-2xl">
+              <video
+                src="/lai.webm"
+                poster="/lai-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Cevaplai tanıtım videosu"
+                className="block aspect-[9/16] h-full w-full object-cover"
+              >
+                Tarayıcınız videoyu oynatamıyor.{" "}
+                <a href="/lai.webm">Videoyu indir.</a>
+              </video>
+
+              <span className="absolute -top-3 left-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-300 animate-pulse" />
+                Cevaplai · canlı
+              </span>
             </div>
           </div>
         </div>
