@@ -71,7 +71,7 @@ export default function Hero() {
                   playsInline
                   preload="metadata"
                   aria-label="Cevaplai tanıtım videosu"
-                  className="block aspect-[1080/1500] h-full w-full object-cover"
+                  className="block aspect-[1080/1800] h-full w-full object-cover"
                 >
                   Tarayıcınız videoyu oynatamıyor.{" "}
                   <a href="/lai.webm">Videoyu indir.</a>
