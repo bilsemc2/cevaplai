@@ -60,23 +60,25 @@ export default function Hero() {
           </div>
 
           <div className="relative mx-auto w-full max-w-md">
-            <div className="relative overflow-hidden rounded-3xl bg-brand-50 ring-1 ring-brand-200 shadow-2xl">
-              <video
-                src="/lai.webm"
-                poster="/lai-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Cevaplai tanıtım videosu"
-                className="block aspect-[9/16] h-full w-full object-cover"
-              >
-                Tarayıcınız videoyu oynatamıyor.{" "}
-                <a href="/lai.webm">Videoyu indir.</a>
-              </video>
+            <div className="relative rounded-3xl bg-brand-50 ring-1 ring-brand-200 shadow-2xl">
+              <div className="overflow-hidden rounded-3xl">
+                <video
+                  src="/lai.webm"
+                  poster="/lai-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Cevaplai tanıtım videosu"
+                  className="block aspect-[1080/1500] h-full w-full object-cover"
+                >
+                  Tarayıcınız videoyu oynatamıyor.{" "}
+                  <a href="/lai.webm">Videoyu indir.</a>
+                </video>
+              </div>
 
-              <span className="absolute -top-3 left-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white shadow-sm">
+              <span className="absolute -top-3 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-brand-600 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white shadow-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent-300 animate-pulse" />
                 Cevaplai · canlı
               </span>
