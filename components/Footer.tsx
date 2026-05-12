@@ -59,7 +59,7 @@ const socials: SocialIcon[] = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/bilsemc2/",
+    href: "https://www.instagram.com/cevaplai/",
     path: (
       <>
         <rect x="2" y="2" width="20" height="20" rx="5" />
